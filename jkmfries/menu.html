@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu</title>
+    <style>
+        body {
+        background-color: red;
+        }
+            :root {
+        font-size: 16px;
+        }
+
+        #menu {
+        background-color: #050505;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+        column-gap: 10px;
+        row-gap: 20px;
+        }
+
+
+        .card{
+        width: calc(33.333% - 1rem);
+        height: calc(33.333% - 1rem);
+        padding: 1rem;
+        align-items: center;
+        box-sizing: border-box;
+        text-align: center;
+        margin-bottom: 1rem;
+        border-radius: 1rem;
+
+        @media (max-width: 768px) {
+            width: calc(50% - 1rem);
+            height: calc(50% - 1rem);
+        }
+
+        @media (max-width: 480px) {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 1.5rem;
+        }
+        }
+
+        .card img{
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 5rem;
+        }
+
+        .card h2{
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
+        color: white;
+        }
+
+        .card p {
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin: 0.5rem 0;
+        color: white;
+        }
+        .logo-image{
+        height: 100px;
+        background-color: red;
+        border-radius: 100px;
+        margin-left: 1rem;
+        }
+        .our{
+        display: flex;
+        justify-content: row;
+        align-items: center;
+        }
+    </style>
+</head>
+<body>
+  <div class="our" >
+    <img class="logo-image" src="assets/Images/logo.png">
+    <h1>OUR MENU</h1>
+    </div>
+    <div id="menu">
+        <div class="card">
+            <img src="assets/Images/fries.jpg" alt="Menu item 2">
+            <h2>Fries</h2>
+            <p>Ksh 150</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/burger.jpg" alt="Menu item 2">
+            <h2>Burger</h2>
+            <p>Ksh 350</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/masala.jpg" alt="Menu item 2">
+            <h2>Chips masala</h2>
+            <p>Ksh 250</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/burgerfries.jpg" alt="Menu item 2">
+            <h2>Burger,fries & juice</h2>
+            <p>Ksh 450</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/friestikka.webp" alt="Menu item 2">
+            <h2>Fries,chicken tikka & juice</h2>
+            <p>Ksh 450</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/Mishkaki-1.webp" alt="Menu item 2">
+            <h2>Masala,2stick mishkaki & coctail</h2>
+            <p>Ksh 450</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/frieskebab.jpg" alt="Menu item 2">
+            <h2>Fries,kebab & coctail</h2>
+            <p>Ksh 350</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/bahjia.jpg" alt="Menu item 2">
+            <h2>Bahjia & Chutney</h2>
+            <p>ksh 250</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/tikka.jpg" alt="Menu item 2">
+            <h2>Chicken tikka</h2>
+            <p>ksh 250</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/samosa.jpg" alt="Menu item 2">
+            <h2>Samosa</h2>
+            <p>Ksh 50</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/sausage.jpg" alt="Menu item 2">
+            <h2>Sausage</h2>
+            <p>Ksh 50</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/kebab.jpg" alt="Menu item 2">
+            <h2>Kebab</h2>
+            <p>Ksh 100</p>
+          </div>
+
+          <div class="card">
+            <img src="assets/Images/juice.jpg" alt="Menu item 2">
+            <h2>Fresh juice</h2>
+            <p>Ksh 150</p>
+          </div>
+        <!-- Add more rows here -->
+      </div>
+      <script>
+        fetch('menu.json')
+  .then(response => response.json())
+  .then(menuData => {
+    const menu = document.getElementById('menu');
+    menuData.forEach(item => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <h2>${item.name}</h2>
+        <p>$${item.price}</p>
+      `;
+      menu.appendChild(card);
+    });
+  });
+      </script>
+</body>
+</html>
